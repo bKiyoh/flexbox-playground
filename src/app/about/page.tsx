@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Header
-        title="Index"
-        pageNo={1}
-        code={<code className={styles.code}>src/app/page.tsx</code>}
+        title="About"
+        pageNo={2}
+        code={<code className={styles.code}>src/app/about/page.tsx</code>}
       />
       <div className={styles.center}>
         <Flexbox />
