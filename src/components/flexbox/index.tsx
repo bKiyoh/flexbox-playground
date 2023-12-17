@@ -15,7 +15,6 @@ export function Flexbox() {
   const [backgroundColor5, setBackgroundColor5] = useState("#6930c3");
   return (
     <div className={style.container} style={{ flexDirection: flexDirection }}>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <div style={{ backgroundColor: backgroundColor1 }}></div>
       <div style={{ backgroundColor: backgroundColor2 }}></div>
       <div style={{ backgroundColor: backgroundColor3 }}></div>
