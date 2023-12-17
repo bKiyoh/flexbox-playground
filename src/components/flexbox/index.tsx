@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "@/components/flexbox/flexbox.module.css";
+import { FlexDirection } from "@/types";
 
-type FlexDirection = "column" | "column-reverse" | "row" | "row-reverse";
 type PageProps = {
   flexDirection: FlexDirection;
 };

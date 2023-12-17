@@ -7,7 +7,8 @@ import { Menu } from "@/components/common/Menu";
 import { SelectBox } from "@/components/common/SelectBox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
-type FlexDirection = "column" | "column-reverse" | "row" | "row-reverse";
+import { FlexDirection } from "@/types";
+
 export default function Home() {
   const darkTheme = createTheme({
     palette: {
@@ -15,6 +16,7 @@ export default function Home() {
     },
   });
   const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
+
   return (
     <ThemeProvider theme={darkTheme}>
       <main className={styles.main}>
@@ -26,7 +28,10 @@ export default function Home() {
         <div className={styles.center}>
           <Flexbox flexDirection={flexDirection} />
         </div>
-        <SelectBox flexDirection={flexDirection} />
+        <SelectBox
+          flexDirection={flexDirection}
+          onFlexDirectionChange={setFlexDirection}
+        />
         <Menu />
         <Footer />
       </main>
