@@ -14,7 +14,7 @@ export default function Home() {
         code={<code className={styles.code}>src/app/about/page.tsx</code>}
       />
       <div className={styles.center}>
-        <Flexbox />
+        <Flexbox flexDirection="row" />
       </div>
       <Menu />
       <Footer />

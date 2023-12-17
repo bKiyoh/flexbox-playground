@@ -1,18 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "@/components/flexbox/flexbox.module.css";
 
 type FlexDirection = "column" | "column-reverse" | "row" | "row-reverse";
+type PageProps = {
+  flexDirection: FlexDirection;
+};
 
-export function Flexbox() {
+export function Flexbox(props: PageProps) {
   const [flexDirection, setFlexDirection] = useState<FlexDirection | undefined>(
-    "row"
+    props.flexDirection
   );
   const [backgroundColor1, setBackgroundColor1] = useState("#80ffdb");
   const [backgroundColor2, setBackgroundColor2] = useState("#64dfdf");
   const [backgroundColor3, setBackgroundColor3] = useState("#48bfe3");
   const [backgroundColor4, setBackgroundColor4] = useState("#5390d9");
   const [backgroundColor5, setBackgroundColor5] = useState("#6930c3");
+
+  useEffect(() => {
+    setFlexDirection(props.flexDirection);
+  }, [props.flexDirection]);
   return (
     <div className={style.container} style={{ flexDirection: flexDirection }}>
       <div style={{ backgroundColor: backgroundColor1 }}></div>
