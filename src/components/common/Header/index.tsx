@@ -1,18 +1,21 @@
-import Link from "next/link";
+import Image from "next/image";
 import styles from "@/components/common/Header/header.module.css";
 
-type PageProps = {
-  title: string;
-  pageNo: number;
-  code: React.ReactNode;
-};
-
-export function Header(props: PageProps) {
+export function Header() {
   return (
     <div className={styles.description}>
       <h1>Flexbox Playground</h1>
-      <Link href="/">Index</Link>
-      <Link href="/about">About</Link>
+      <div>
+        Thanks for{" "}
+        <Image
+          className={styles.logo}
+          src="/next.svg"
+          alt="Next.js Logo"
+          width={100}
+          height={24}
+          priority
+        />
+      </div>
     </div>
   );
 }

@@ -74,6 +74,19 @@
   }
 }
 
+.logo {
+  position: relative;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+  }
+  .vercelLogo {
+    filter: invert(1);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .vercelLogo {
     filter: invert(1);
