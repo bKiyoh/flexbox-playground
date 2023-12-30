@@ -30,6 +30,7 @@ export function SelectBox({ flexDirection, onFlexDirectionChange }: PageProps) {
           value={flexDirection}
           label="Flex Direction"
           onChange={handleChange}
+          sx={{ m: 1, minWidth: 120 }}
         >
           {flexDirectionOptions.map((direction) => (
             <MenuItem key={direction} value={direction}>
