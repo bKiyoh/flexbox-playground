@@ -16,13 +16,13 @@ export default function Home() {
     },
   });
   const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
-  const [foo, setHoge] = useState<string>("test1");
+  const [testValue, setTestValue] = useState<string>("test1");
 
-  const hoge = {
-    value: foo,
-    label: "ホゲータ",
+  const selectOptionsTest = {
+    currentValue: testValue,
+    onChange: setTestValue,
+    label: "テスト",
     options: ["test1", "test2"],
-    changeValue: setHoge,
   };
 
   return (
@@ -37,7 +37,7 @@ export default function Home() {
             flexDirection={flexDirection}
             onFlexDirectionChange={setFlexDirection}
           />
-          <SelectBox hoge={hoge} />
+          <SelectBox selectOptions={selectOptionsTest} />
         </div>
         <Menu />
       </main>
