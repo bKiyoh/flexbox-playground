@@ -3,6 +3,7 @@ import styles from "@/app/page.module.css";
 import { Flexbox } from "@/components/flexbox";
 import { Header } from "@/components/common/Header";
 import { Menu } from "@/components/common/Menu";
+import { FlexDirectionSelectBox } from "@/components/common/FlexDirectionSelectBox";
 import { SelectBox } from "@/components/common/SelectBox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
@@ -15,6 +16,14 @@ export default function Home() {
     },
   });
   const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
+  const [foo, setHoge] = useState<string>("test1");
+
+  const hoge = {
+    value: foo,
+    label: "ホゲータ",
+    options: ["test1", "test2"],
+    changeValue: setHoge,
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -24,10 +33,11 @@ export default function Home() {
           <Flexbox flexDirection={flexDirection} />
         </div>
         <div className={styles.grid}>
-          <SelectBox
+          <FlexDirectionSelectBox
             flexDirection={flexDirection}
             onFlexDirectionChange={setFlexDirection}
           />
+          <SelectBox hoge={hoge} />
         </div>
         <Menu />
       </main>

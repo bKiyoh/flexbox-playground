@@ -3,38 +3,33 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Box from "@mui/material/Box";
-import { FlexDirection } from "@/types";
 
 type PageProps = {
-  flexDirection: FlexDirection;
-  onFlexDirectionChange: (newDirection: FlexDirection) => void;
+  hoge: {
+    value: string;
+    changeValue: (newValue: string) => void;
+    label: string;
+    options: string[];
+  };
 };
 
-export function SelectBox({ flexDirection, onFlexDirectionChange }: PageProps) {
-  const flexDirectionOptions: FlexDirection[] = [
-    "column",
-    "column-reverse",
-    "row",
-    "row-reverse",
-  ];
-
-  const handleChange = (event: SelectChangeEvent<FlexDirection>) => {
-    onFlexDirectionChange(event.target.value as FlexDirection);
+export function SelectBox({ hoge }: PageProps) {
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    hoge.changeValue(event.target.value as string);
   };
 
   return (
     <Box sx={{ minWidth: 180 }}>
       <FormControl fullWidth>
-        <InputLabel>Flex Direction</InputLabel>
+        <InputLabel>{hoge.label}</InputLabel>
         <Select
-          value={flexDirection}
-          label="Flex Direction"
+          value={hoge.value}
           onChange={handleChange}
           sx={{ m: 1, minWidth: 120 }}
         >
-          {flexDirectionOptions.map((direction) => (
-            <MenuItem key={direction} value={direction}>
-              {direction}
+          {hoge.options.map((x) => (
+            <MenuItem key={x} value={x}>
+              {x}
             </MenuItem>
           ))}
         </Select>
