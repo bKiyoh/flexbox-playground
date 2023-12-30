@@ -4,18 +4,18 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Box from "@mui/material/Box";
 
-type SelectBoxProps = {
+type SelectBoxProps<T> = {
   selectOptions: {
-    currentValue: string;
-    onChange: (newValue: string) => void;
+    currentValue: T;
+    onChange: (newValue: T) => void;
     label: string;
     options: string[];
   };
 };
 
-export function SelectBox({ selectOptions }: SelectBoxProps) {
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    selectOptions.onChange(event.target.value);
+export function SelectBox<T>({ selectOptions }: SelectBoxProps<T>) {
+  const handleChange = (event: SelectChangeEvent<T>) => {
+    selectOptions.onChange(event.target.value as T);
   };
 
   return (

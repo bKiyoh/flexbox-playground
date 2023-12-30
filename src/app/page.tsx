@@ -3,7 +3,6 @@ import styles from "@/app/page.module.css";
 import { Flexbox } from "@/components/flexbox";
 import { Header } from "@/components/common/Header";
 import { Menu } from "@/components/common/Menu";
-import { FlexDirectionSelectBox } from "@/components/common/FlexDirectionSelectBox";
 import { SelectBox } from "@/components/common/SelectBox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
@@ -15,14 +14,14 @@ export default function Home() {
       mode: "dark",
     },
   });
-  const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
-  const [testValue, setTestValue] = useState<string>("test1");
 
-  const selectOptionsTest = {
-    currentValue: testValue,
-    onChange: setTestValue,
-    label: "テスト",
-    options: ["test1", "test2"],
+  const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
+
+  const flexDirectionOptions = {
+    currentValue: flexDirection,
+    onChange: setFlexDirection,
+    label: "Flex Direction",
+    options: ["column", "column-reverse", "row", "row-reverse"],
   };
 
   return (
@@ -33,11 +32,7 @@ export default function Home() {
           <Flexbox flexDirection={flexDirection} />
         </div>
         <div className={styles.grid}>
-          <FlexDirectionSelectBox
-            flexDirection={flexDirection}
-            onFlexDirectionChange={setFlexDirection}
-          />
-          <SelectBox selectOptions={selectOptionsTest} />
+          <SelectBox selectOptions={flexDirectionOptions} />
         </div>
         <Menu />
       </main>
