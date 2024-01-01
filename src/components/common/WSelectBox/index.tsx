@@ -9,11 +9,11 @@ type SelectBoxProps<T> = {
     currentValue: T;
     onChange: (newValue: T) => void;
     label: string;
-    options: string[];
+    options: string[] | number[];
   };
 };
 
-export function SelectBox<T>({ selectOptions }: SelectBoxProps<T>) {
+export function WSelectBox<T>({ selectOptions }: SelectBoxProps<T>) {
   const handleChange = (event: SelectChangeEvent<T>) => {
     selectOptions.onChange(event.target.value as T);
   };

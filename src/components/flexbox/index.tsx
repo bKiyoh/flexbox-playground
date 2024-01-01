@@ -4,11 +4,13 @@ import style from "@/components/flexbox/flexbox.module.css";
 import { FlexDirection, JustifyContent } from "@/types";
 
 type PageProps = {
+  boxSize: number;
   flexDirection: FlexDirection;
   justifyContent: JustifyContent;
 };
 
 export function Flexbox(props: PageProps) {
+  const [boxSize, setBoxSize] = useState<number>(props.boxSize);
   const [flexDirection, setFlexDirection] = useState<FlexDirection | undefined>(
     props.flexDirection
   );
@@ -23,22 +25,39 @@ export function Flexbox(props: PageProps) {
   const [backgroundColor5, setBackgroundColor5] = useState("#6930c3");
 
   useEffect(() => {
+    setBoxSize(props.boxSize);
+  }, [props.boxSize]);
+  useEffect(() => {
     setFlexDirection(props.flexDirection);
   }, [props.flexDirection]);
   useEffect(() => {
     setJustifyContent(props.justifyContent);
   }, [props.justifyContent]);
 
+  const createBox = (backgroundColor: string) => (
+    <div
+      style={{
+        backgroundColor: backgroundColor,
+        width: boxSize,
+        height: boxSize,
+      }}
+    />
+  );
+
   return (
     <div
       className={style.container}
-      style={{ flexDirection: flexDirection, justifyContent: justifyContent }}
+      style={{
+        flexDirection: flexDirection,
+        justifyContent: justifyContent,
+        flexWrap: "wrap",
+      }}
     >
-      <div style={{ backgroundColor: backgroundColor1 }}></div>
-      <div style={{ backgroundColor: backgroundColor2 }}></div>
-      <div style={{ backgroundColor: backgroundColor3 }}></div>
-      <div style={{ backgroundColor: backgroundColor4 }}></div>
-      <div style={{ backgroundColor: backgroundColor5 }}></div>
+      {createBox(backgroundColor1)}
+      {createBox(backgroundColor2)}
+      {createBox(backgroundColor3)}
+      {createBox(backgroundColor4)}
+      {createBox(backgroundColor5)}
     </div>
   );
 }
