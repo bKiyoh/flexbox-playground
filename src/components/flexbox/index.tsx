@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "@/components/flexbox/flexbox.module.css";
-import { FlexDirection, JustifyContent } from "@/types";
+import { FlexDirection, FlexWrap, JustifyContent } from "@/types";
 
 type PageProps = {
   boxSize: number;
   flexDirection: FlexDirection;
   justifyContent: JustifyContent;
+  flexWrap: FlexWrap;
 };
 
 export function Flexbox(props: PageProps) {
@@ -17,6 +18,9 @@ export function Flexbox(props: PageProps) {
   const [justifyContent, setJustifyContent] = useState<
     JustifyContent | undefined
   >(props.justifyContent);
+  const [flexWrap, setFlexWrap] = useState<FlexWrap | undefined>(
+    props.flexWrap
+  );
 
   const [backgroundColor1, setBackgroundColor1] = useState("#80ffdb");
   const [backgroundColor2, setBackgroundColor2] = useState("#64dfdf");
@@ -33,6 +37,9 @@ export function Flexbox(props: PageProps) {
   useEffect(() => {
     setJustifyContent(props.justifyContent);
   }, [props.justifyContent]);
+  useEffect(() => {
+    setFlexWrap(props.flexWrap);
+  }, [props.flexWrap]);
 
   const createBox = (backgroundColor: string) => (
     <div
@@ -50,7 +57,7 @@ export function Flexbox(props: PageProps) {
       style={{
         flexDirection: flexDirection,
         justifyContent: justifyContent,
-        flexWrap: "wrap",
+        flexWrap: flexWrap,
       }}
     >
       {createBox(backgroundColor1)}

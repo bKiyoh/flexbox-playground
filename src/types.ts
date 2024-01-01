@@ -14,3 +14,5 @@ export type ContentDistribution =
   | "stretch";
 
 export type JustifyContent = ContentPosition | ContentDistribution;
+
+export type FlexWrap = "nowrap" | "wrap" | "wrap-reverse";

@@ -6,7 +6,7 @@ import { Menu } from "@/components/common/Menu";
 import { WSelectBox } from "@/components/common/WSelectBox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
-import { FlexDirection, JustifyContent } from "@/types";
+import { FlexDirection, FlexWrap, JustifyContent } from "@/types";
 
 export default function Home() {
   const darkTheme = createTheme({
@@ -19,6 +19,7 @@ export default function Home() {
   const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
   const [justifyContent, setJustifyContent] =
     useState<JustifyContent>("center");
+  const [flexWrap, setFlexWrap] = useState<FlexWrap>("nowrap");
 
   const boxSizeOptions = {
     currentValue: boxSize,
@@ -48,6 +49,12 @@ export default function Home() {
       "stretch",
     ],
   };
+  const flexWrapOptions = {
+    currentValue: flexWrap,
+    onChange: setFlexWrap,
+    label: "FlexWrap",
+    options: ["nowrap", "wrap", "wrap-reverse"],
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -58,12 +65,14 @@ export default function Home() {
             boxSize={boxSize}
             flexDirection={flexDirection}
             justifyContent={justifyContent}
+            flexWrap={flexWrap}
           />
         </div>
         <div className={styles.grid}>
           <WSelectBox selectOptions={boxSizeOptions} />
           <WSelectBox selectOptions={flexDirectionOptions} />
           <WSelectBox selectOptions={justifyContentOptions} />
+          <WSelectBox selectOptions={flexWrapOptions} />
         </div>
         <Menu />
       </main>
