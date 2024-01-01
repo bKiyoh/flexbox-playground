@@ -4,14 +4,16 @@ import style from "@/components/flexbox/flexbox.module.css";
 import { FlexDirection, FlexWrap, JustifyContent } from "@/types";
 
 type PageProps = {
-  boxSize: number;
+  width: number;
+  height: number;
   flexDirection: FlexDirection;
   justifyContent: JustifyContent;
   flexWrap: FlexWrap;
 };
 
 export function Flexbox(props: PageProps) {
-  const [boxSize, setBoxSize] = useState<number>(props.boxSize);
+  const [width, setWidth] = useState<number>(props.width);
+  const [height, setHeight] = useState<number>(props.height);
   const [flexDirection, setFlexDirection] = useState<FlexDirection | undefined>(
     props.flexDirection
   );
@@ -29,8 +31,11 @@ export function Flexbox(props: PageProps) {
   const [backgroundColor5, setBackgroundColor5] = useState("#6930c3");
 
   useEffect(() => {
-    setBoxSize(props.boxSize);
-  }, [props.boxSize]);
+    setWidth(props.width);
+  }, [props.width]);
+  useEffect(() => {
+    setHeight(props.height);
+  }, [props.height]);
   useEffect(() => {
     setFlexDirection(props.flexDirection);
   }, [props.flexDirection]);
@@ -45,8 +50,8 @@ export function Flexbox(props: PageProps) {
     <div
       style={{
         backgroundColor: backgroundColor,
-        width: boxSize,
-        height: boxSize,
+        width: width,
+        height: height,
       }}
     />
   );
