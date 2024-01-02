@@ -1,12 +1,13 @@
 "use client";
-import styles from "@/app/page.module.css";
+import { useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Box, Button, FormControl } from "@mui/material";
 import { Flexbox } from "@/components/flexbox";
 import { Header } from "@/components/common/Header";
 import { WSelectBox } from "@/components/common/WSelectBox";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useState } from "react";
-import { FlexDirection, FlexWrap, JustifyContent } from "@/types";
 import { WSlider } from "@/components/common/WSlider";
+import { FlexDirection, FlexWrap, JustifyContent } from "@/types";
+import styles from "@/app/page.module.css";
 
 export default function Home() {
   const darkTheme = createTheme({
@@ -15,34 +16,42 @@ export default function Home() {
     },
   });
 
-  const [width, setWidth] = useState<number>(50);
-  const [height, setHeight] = useState<number>(50);
-  const [flexDirection, setFlexDirection] = useState<FlexDirection>("row");
-  const [justifyContent, setJustifyContent] =
-    useState<JustifyContent>("space-around");
-  const [flexWrap, setFlexWrap] = useState<FlexWrap>("nowrap");
+  const initialWidth = 50;
+  const initialHeight = 50;
+  const initialFlexDirection = "row";
+  const initialJustifyContent = "space-around";
+  const initialFlexWrap = "nowrap";
+
+  const [width, setWidth] = useState<number>(initialWidth);
+  const [height, setHeight] = useState<number>(initialHeight);
+  const [flexDirection, setFlexDirection] =
+    useState<FlexDirection>(initialFlexDirection);
+  const [justifyContent, setJustifyContent] = useState<JustifyContent>(
+    initialJustifyContent
+  );
+  const [flexWrap, setFlexWrap] = useState<FlexWrap>(initialFlexWrap);
 
   const WidthOptions = {
     currentValue: width,
     onChange: setWidth,
-    label: "Width",
+    label: "width",
   };
   const HeightOptions = {
     currentValue: height,
     onChange: setHeight,
-    label: "Height",
+    label: "height",
     max: 150,
   };
   const flexDirectionOptions = {
     currentValue: flexDirection,
     onChange: setFlexDirection,
-    label: "Flex Direction",
+    label: "flexDirection :",
     options: ["column", "column-reverse", "row", "row-reverse"],
   };
   const justifyContentOptions = {
     currentValue: justifyContent,
     onChange: setJustifyContent,
-    label: "JustifyContent",
+    label: "justifyContent :",
     options: [
       "center",
       "end",
@@ -58,8 +67,16 @@ export default function Home() {
   const flexWrapOptions = {
     currentValue: flexWrap,
     onChange: setFlexWrap,
-    label: "FlexWrap",
+    label: "flexWrap :",
     options: ["nowrap", "wrap", "wrap-reverse"],
+  };
+
+  const resetSettings = () => {
+    setWidth(initialWidth);
+    setHeight(initialHeight);
+    setFlexDirection(initialFlexDirection);
+    setJustifyContent(initialJustifyContent);
+    setFlexWrap(initialFlexWrap);
   };
 
   return (
@@ -83,6 +100,13 @@ export default function Home() {
           <WSelectBox selectOptions={flexDirectionOptions} />
           <WSelectBox selectOptions={justifyContentOptions} />
           <WSelectBox selectOptions={flexWrapOptions} />
+          <Box sx={{ m: 2, minWidth: 180 }}>
+            <FormControl fullWidth>
+              <Button variant="contained" size="medium" onClick={resetSettings}>
+                Reset
+              </Button>
+            </FormControl>
+          </Box>
         </div>
       </main>
     </ThemeProvider>
