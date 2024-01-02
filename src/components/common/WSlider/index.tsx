@@ -27,10 +27,10 @@ export function WSlider({ selectOptions }: SelectBoxProps) {
     <Box sx={{ m: 2, minWidth: 180 }}>
       <FormControl fullWidth>
         <Typography>
-          {selectOptions?.label}:{selectOptions?.currentValue}px
+          {selectOptions?.label} : {selectOptions?.currentValue}px
         </Typography>
         <Slider
-          defaultValue={selectOptions.currentValue}
+          value={selectOptions.currentValue}
           onChange={handleChange}
           valueLabelDisplay="auto"
           step={10}
